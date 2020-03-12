@@ -14,12 +14,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var slider: UISlider!
     var currentValue: Int = 0
     
+    @IBOutlet weak var targetLabel: UILabel!
     //part 2 of Part 3
     var targetValue: Int = 0
+    
+    func updateTargetLabel(){
+        self.targetLabel.text = "\(targetValue)"
+    }
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         currentValue = lroundf(slider.value)
+        self.targetLabel.text = String(targetValue)
         
         startNewRound()
     }
@@ -29,7 +37,7 @@ class ViewController: UIViewController {
         let message = "The value is:\(currentValue)" + "\nThe target value is:\(targetValue)"
         let alert = UIAlertController(title: "Hello World!", message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
+        let action = UIAlertAction(title: "New Round", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
         
@@ -47,7 +55,10 @@ class ViewController: UIViewController {
     func startNewRound(){
         targetValue = Int.random(in: 0...100)
         currentValue = lroundf(slider.value)
+        updateTargetLabel()
     }
+    
+    
     
     
    
