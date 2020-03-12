@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     var targetValue: Int = 0
     
     func updateTargetLabel(){
-        self.targetLabel.text = "\(targetValue)"
+        self.targetLabel.text = String(targetValue)
     }
     
 
